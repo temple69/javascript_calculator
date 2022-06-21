@@ -1,29 +1,41 @@
-function calculator(operand1,operation,operand2){
-    let result;
-try {
+let operations={
+    '+':"Addition",
+    '-':"Subtraction",
+    "/":"Divison",
+    '*':"Multiplication"
+}
+function calculator(){
+    let operand1= prompt("Enter First Number")
+    let operation = prompt("What Operations Would You Like To Perform [+,-,/,*]")
+let operand2= prompt("Enter Second Number")
+    let result=0
     if (isNaN(operand1) || isNaN(operand2)) {
         throw   new Error("Alphabets  Not allowed Only Number")
     }
+    
     else{
-        parseFloat(operand1)
-        parseInt(operand2)
         if(operation ==="+"){
-            console.log(operand1 + operand2)
+            result+=parseFloat(operand1)+parseFloat(operand2)
         }
         else if(operation ==="-"){
-            console.log(operand1 - operand2)
+            result=parseFloat(operand1)-parseFloat(operand2)
         }
         else if(operation ==="/"){
             result= operand1 /operand2
-            console.log(result.toFixed(2))
         }
         else if(operation ==="*"){
-            console.log( operand1 * operand2)
+            result=parseFloat(operand1)*parseFloat(operand2)
         }
-    }
-} catch (error) {
-    console.log(error)
-    
-}    
+        else{
+            alert("invalid Operation Cannot Perform operation")
+        }
+
+    }      
+    alert(`Your operation: ${operations[operation]}\n The Result is ${result.toFixed(2)}`)
 }
-calculator("67","*","30")
+try{
+  calculator()
+}
+catch(err){
+    alert(err)
+}
